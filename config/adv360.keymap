@@ -35,8 +35,31 @@
         compatible = "zmk,combos";
 
         combo-left {
-            bindings = <&kp LEFT_ARROW>;
+            bindings = <&kp LEFT>;
             key-positions = <29 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        combo-right {
+            bindings = <&kp RIGHT>;
+            key-positions = <29 43>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        combo-up {
+            bindings = <&kp UP>;
+            key-positions = <29 41>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        combo-down {
+            bindings = <&kp DOWN>;
+            key-positions = <29 42>;
+            layers = <0>;
+            timeout-ms = <50>;
         };
     };
 
