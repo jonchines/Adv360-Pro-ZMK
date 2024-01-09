@@ -33,6 +33,27 @@
 
     combos {
         compatible = "zmk,combos";
+
+        combo-we-q {
+            bindings = <&kp Q>;
+            key-positions = <16 17>;
+        };
+
+        combo-io-p {
+            bindings = <&kp P>;
+            key-positions = <24 25>;
+        };
+
+        combo-cv-b {
+            bindings = <&kp B>;
+            key-positions = <49 50>;
+            layers = <0>;
+        };
+
+        combo-m,-n {
+            bindings = <&kp N>;
+            key-positions = <55 56>;
+        };
     };
 
     keymap {
@@ -40,11 +61,11 @@
 
         default_layer {
             bindings = <
-&kp EQUAL  &kp N1     &kp N2    &kp N3            &kp N4             &kp N5  &tog 1                                                              &mo 3      &kp N6  &kp N7       &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E             &kp R              &kp T   &none                                                               &none      &kp Y   &kp U        &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC    &lt 4 A    &kp S     &kp D             &kp F              &kp G   &none     &kp DEL           &kp HOME          &kp LGUI   &kp RCTRL  &none      &kp H   &kp J        &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z      &kp X     &kp C             &kp V              &kp B                               &kp END           &kp PG_UP                        &kp N   &mt LG(M) M  &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo 2      &kp GRAVE  &kp CAPS  &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))          &kp BSPC  &kp LEFT_CONTROL  &kp LEFT_ALT      &kp PG_DN  &kp ENTER  &kp SPACE          &none        &none      &kp LBKT  &kp RBKT  &mo 2
+&kp EQUAL  &kp N1          &kp N2          &kp N3              &kp N4             &kp N5   &tog 1                                                              &mo 3      &kp N6  &kp N7       &kp N8               &kp N9           &kp N0             &kp MINUS
+&kp TAB    &kp Q           &kp W           &kp E               &kp R              &kp T    &none                                                               &none      &kp Y   &kp U        &kp I                &kp O            &kp P              &kp BSLH
+&kp ESC    &mt LEFT_WIN A  &mt LEFT_ALT B  &mt LEFT_CONTROL D  &mt LSHFT F        &lt 4 G  &none     &kp DEL           &kp HOME          &kp LGUI   &kp RCTRL  &none      &kp H   &mt RSHFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt LEFT_GUI SEMI  &kp SQT
+&none      &kp Z           &kp X           &kp C               &kp V              &kp B                                &kp END           &kp PG_UP                        &kp N   &kp M        &kp COMMA            &kp DOT          &kp FSLH           &none
+&mo 2      &kp GRAVE       &kp CAPS        &kp LG(LC(LEFT))    &kp LG(LC(RIGHT))           &kp BSPC  &kp LEFT_CONTROL  &kp LEFT_ALT      &kp PG_DN  &kp ENTER  &kp SPACE          &none        &none                &kp LBKT         &kp RBKT           &mo 2
             >;
         };
 
@@ -73,18 +94,18 @@
 &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none                                                  &trans                  &none  &none       &none       &none  &none  &none
 &none  &none         &none         &none         &none         &none         &bootloader                                            &bootloader             &none  &none       &none       &none  &none  &none
 &none  &none         &none         &none         &none         &none         &none        &none  &none      &bt BT_CLR  &none       &rgb_ug RGB_MEFS_CMD 5  &none  &none       &none       &none  &none  &none
-&none  &none         &none         &none         &macro_ver    &none                             &none      &none                                           &none  &none       &none       &none  &none  &none
+&none  &none         &none         &none         &none         &none                             &none      &none                                           &none  &none       &none       &none  &none  &none
 &none  &none         &none         &none         &none                       &none        &none  &none      &none       &bl BL_TOG  &rgb_ug RGB_TOG                &bl BL_INC  &bl BL_DEC  &none  &none  &none
             >;
         };
 
-        layer_arrows {
+        layer-nav {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans    &trans    &trans  &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans    &trans    &trans  &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans    &trans    &trans  &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans            &trans    &trans  &trans     &trans  &trans
+&none  &none         &none         &none             &none           &none  &none                                         &none    &none     &none          &none        &none      &none     &none
+&none  &none         &none         &none             &none           &none  &none                                         &none    &none     &none          &none        &none      &none     &none
+&none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &none  &none  &none  &none      &none      &none     &none    &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT  &kp CAPS  &none
+&none  &none         &none         &none             &none           &none                &none      &none                         &kp HOME  &kp PAGE_DOWN  &kp PAGE_UP  &kp END    &kp INS   &none
+&none  &none         &none         &none             &none                  &none  &none  &none      &kp ENTER  &kp BSPC  &kp DEL            &none          &none        &none      &none     &none
             >;
         };
     };
