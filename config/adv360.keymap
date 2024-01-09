@@ -20,14 +20,28 @@
         #include "macros.dtsi"
     #include "version.dtsi"
 
-        hm: homerow_mods {
+        hm: homerow-mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "Homerow Mods";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick_tap_ms = <175>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+        };
+
+        tm: thumbrow-mod {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Thumbrow Mod";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+            flavor = "tap-preferred";
         };
     };
 
@@ -61,11 +75,11 @@
 
         default_layer {
             bindings = <
-&kp EQUAL  &kp N1          &kp N2          &kp N3              &kp N4             &kp N5  &tog 1                                                                &mo 3      &kp N6  &kp N7       &kp N8               &kp N9           &kp N0             &kp MINUS
-&kp TAB    &kp Q           &kp W           &kp E               &kp R              &kp T   &none                                                                 &none      &kp Y   &kp U        &kp I                &kp O            &kp P              &kp BSLH
-&kp ESC    &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &mt LSHFT F        &kp G   &none       &kp DEL           &kp HOME          &kp LGUI   &kp RCTRL  &none      &kp H   &mt RSHFT J  &mt RIGHT_CONTROL K  &mt RIGHT_ALT L  &mt LEFT_GUI SEMI  &kp SQT
-&none      &kp Z           &kp X           &kp C               &kp V              &kp B                                 &kp END           &kp PG_UP                        &kp N   &kp M        &kp COMMA            &kp DOT          &kp FSLH           &none
-&mo 2      &kp GRAVE       &kp CAPS        &kp LG(LC(LEFT))    &kp LG(LC(RIGHT))          &lt 1 BSPC  &kp LEFT_CONTROL  &kp LEFT_ALT      &kp PG_DN  &kp ENTER  &kp SPACE          &none        &none                &kp LBKT         &kp RBKT           &mo 2
+&kp EQUAL  &kp N1          &kp N2          &kp N3              &kp N4             &kp N5  &none                                                                 &mo 3      &kp N6  &kp N7             &kp N8               &kp N9           &kp N0             &kp MINUS
+&kp TAB    &kp Q           &kp W           &kp E               &kp R              &kp T   &none                                                                 &none      &kp Y   &kp U              &kp I                &kp O            &kp P              &kp BSLH
+&kp ESC    &hm LEFT_GUI A  &hm LEFT_ALT S  &hm LEFT_CONTROL D  &hm LEFT_SHIFT F   &kp G   &mo 4       &kp DEL           &kp HOME          &kp LGUI   &kp RCTRL  &none      &kp H   &hm RIGHT_SHIFT J  &hm RIGHT_CONTROL K  &hm RIGHT_ALT L  &hm LEFT_GUI SEMI  &kp SQT
+&none      &kp Z           &kp X           &kp C               &kp V              &kp B                                 &kp END           &kp PG_UP                        &kp N   &kp M              &kp COMMA            &kp DOT          &kp FSLH           &none
+&mo 2      &kp GRAVE       &kp CAPS        &kp LG(LC(LEFT))    &kp LG(LC(RIGHT))          &tm 1 BSPC  &kp LEFT_CONTROL  &kp LEFT_ALT      &kp PG_DN  &kp ENTER  &kp SPACE          &none              &none                &kp LBKT         &kp RBKT           &mo 2
             >;
         };
 
