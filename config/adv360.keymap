@@ -3,11 +3,6 @@
  *
  * SPDX-License-Identifier: MIT
  */
-/* THIS FILE WAS GENERATED!
- *
- * This file was generated automatically. You may or may not want to
- * edit it directly.
- */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
@@ -15,10 +10,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#include "./keypos_adv360.h"
+
 / {
     behaviors {
         #include "macros.dtsi"
-    #include "version.dtsi"
+        #include "version.dtsi"
 
         hm: homerow-mods {
             compatible = "zmk,behavior-hold-tap";
@@ -27,11 +24,34 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-
             quick-tap-ms = <200>;
             require-prior-idle-ms = <125>;
         };
 
+        hml: homerow-mods-left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Homerow Mods Left";
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;                // repeat on tap-into-hold
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_LH_ALPHA>;
+            hold-trigger-on-release;             // delay positional check until key-release
+        };
+        
+        hmr: homerow-mods-right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Homerow Mods Right";
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;                // repeat on tap-into-hold
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_RH_ALPHA>;
+            hold-trigger-on-release;             // delay positional check until key-release
+        };
+        
         tm: thumbrow-mod {
             compatible = "zmk,behavior-hold-tap";
             label = "Thumbrow Mods";
@@ -82,11 +102,11 @@
 
         default_layer {
             bindings = <
-&kp EQUAL  &kp N1          &kp N2          &kp N3              &kp N4             &kp N5  &none                                                       &mo 3      &kp N6  &kp N7             &kp N8               &kp N9           &kp N0             &kp MINUS
-&kp TAB    &kp Q           &kp W           &kp E               &kp R              &kp T   &none                                                       &none      &kp Y   &kp U              &kp I                &kp O            &kp P              &kp BSLH
-&kp ESC    &hm LEFT_GUI A  &hm LEFT_ALT S  &hm LEFT_CONTROL D  &hm LEFT_SHIFT F   &kp G   &kp LBKT    &kp DEL    &none          &none      &kp RCTRL  &kp RBKT   &kp H   &hm RIGHT_SHIFT J  &hm RIGHT_CONTROL K  &hm RIGHT_ALT L  &hm LEFT_GUI SEMI  &kp SQT
-&dsc       &kp Z           &kp X           &kp C               &kp V              &kp B                          &kp PG_UP      &kp PG_DN                        &kp N   &kp M              &kp COMMA            &kp DOT          &kp FSLH           &sk RIGHT_SHIFT
-&mo 2      &none           &kp LALT        &kp LG(LC(LEFT))    &kp LG(LC(RIGHT))          &tm 4 BSPC  &tm 1 TAB  &kp HOME       &kp END    &kp ENTER  &kp SPACE          &kp GRAVE          &none                &none            &none              &mo 2
+&kp EQUAL  &kp N1           &kp N2           &kp N3               &kp N4              &kp N5  &none                                                       &mo 3      &kp N6  &kp N7              &kp N8                &kp N9            &kp N0              &kp MINUS
+&kp TAB    &kp Q            &kp W            &kp E                &kp R               &kp T   &none                                                       &none      &kp Y   &kp U               &kp I                 &kp O             &kp P               &kp BSLH
+&kp ESC    &hml LEFT_GUI A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F   &kp G   &kp LBKT    &kp DEL    &none          &none      &kp RCTRL  &kp RBKT   &kp H   &hmr RIGHT_SHIFT J  &hmr RIGHT_CONTROL K  &hmr RIGHT_ALT L  &hmr LEFT_GUI SEMI  &kp SQT
+&dsc       &kp Z            &kp X            &kp C                &kp V               &kp B                          &kp PG_UP      &kp PG_DN                        &kp N   &kp M               &kp COMMA             &kp DOT           &kp FSLH            &kp RIGHT_SHIFT
+&mo 2      &none            &kp LALT         &kp LG(LC(LEFT))     &kp LG(LC(RIGHT))           &tm 4 BSPC  &tm 1 TAB  &kp HOME       &kp END    &kp ENTER  &kp SPACE          &kp GRAVE           &none                 &none             &none               &mo 2
             >;
         };
 
@@ -95,7 +115,7 @@
 &none      &none         &none     &none      &none       &none   &none                                                   &mo 3      &none  &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &none
 &trans     &none         &none     &none      &none       &none   &none                                                   &none      &none  &kp N7      &kp N8        &kp N9         &kp KP_MINUS     &none
 &trans     &kp LEFT_GUI  &kp LALT  &kp LCTRL  &kp LSHIFT  &kp G   &none     &trans    &trans          &trans    &trans    &none      &none  &kp N4      &kp N5        &kp N6         &kp KP_PLUS      &none
-&trans     &none         &none     &none      &none       &none                       &trans          &trans                         &none  &kp N1      &kp N2        &kp NUMBER_3   &kp KP_ENTER     &trans
+&trans     &none         &none     &none      &none       &none                       &trans          &trans                         &none  &kp N1      &kp N2        &kp N3         &kp KP_ENTER     &trans
 &mo 2      &none         &none     &trans     &trans              &trans    &trans    &trans          &trans    &trans    &trans            &kp N0      &none         &kp KP_DOT     &none            &mo 2
             >;
         };
