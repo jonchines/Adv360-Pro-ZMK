@@ -31,6 +31,7 @@
         hml: homerow-mods-left {
             compatible = "zmk,behavior-hold-tap";
             label = "Homerow Mods Left";
+            #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
@@ -43,6 +44,7 @@
         hmr: homerow-mods-right {
             compatible = "zmk,behavior-hold-tap";
             label = "Homerow Mods Right";
+            #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
